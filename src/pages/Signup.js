@@ -1,7 +1,7 @@
 import React from 'react';
-import style from './signin.module.css'
+import style from './signup.module.css'
 
-const Signin=()=>{
+const signup=()=>{
     return(
     <main>
 
@@ -56,4 +56,4 @@ const Signin=()=>{
     </main>
     )
 }
-export default Signin
+export default signup
