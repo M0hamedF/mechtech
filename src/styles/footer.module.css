@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap");
+
+footer {
+  padding: 25px 100px 15px;
+  background-color: rgb(23, 22, 22);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+footer h4 {
+  color: white;
+}
+
+footer a,
+footer p {
+  font-size: 13px;
+  color: rgb(154, 148, 148);
+}
+
+footer a:hover {
+  color: rgb(208, 9, 9);
+}
+
+footer .prim {
+  margin-bottom: 20px;
+}
+
+footer .info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+footer .column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+footer .sec {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1em;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 15px;
+  gap: 10px;
+}
+
+@media (max-width: 568px) {
+  footer {
+    padding: 30px 80px;
+  }
+  footer .column a {
+    font-size: 18px;
+  }
+  footer .Policy a,
+  footer .copyright {
+    text-align: center;
+  }
+  footer .column h4 {
+    font-size: 22px;
+  }
+}
