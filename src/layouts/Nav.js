@@ -92,7 +92,7 @@ const Nav = () => {
           <AvatarIcon authedUser={authedUser} />
         ) : (
           <li>
-            <Link to="/login">Sign In</Link>
+            <Link to="/sign-in">Sign In</Link>
           </li>
         )}
 

@@ -49,3 +49,70 @@
 .btn:hover {
   background-color: #125399;
 }
+
+/*
+  Form component
+*/
+
+form {
+  gap: 30px;
+  display: flex;
+  padding: 50px;
+  max-width: 90%;
+  margin-top: 45px;
+  min-width: 250px;
+  min-height: 250px;
+  border-radius: 20px;
+  flex-direction: column;
+  background-color: rgb(28, 27, 27);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+.title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+form .btn {
+  width: 150px;
+  margin: auto;
+  margin-top: 10px;
+}
+.redirect {
+  font-size: 13px;
+  text-align: center;
+}
+.redirect a {
+  color: #007bff;
+}
+@media (max-width: 500px) {
+  form {
+    padding: 30px 15px;
+  }
+}
+
+/*
+  Input component
+*/
+
+label {
+  gap: 15px;
+  display: grid;
+  font-size: 15px;
+  align-items: center;
+  grid-template-columns: 70px 1fr;
+}
+label strong {
+  font-weight: 500;
+}
+input {
+  border: none;
+  padding: 5px;
+  font: inherit;
+  margin-top: 5px;
+  outline-color: #007bff;
+}
+@media (max-width: 500px) {
+  label {
+    gap: 10px;
+    grid-template-columns: 65px calc(100% - 70px);
+  }
+}

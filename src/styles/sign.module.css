@@ -1,0 +1,12 @@
+main.sign {
+  background-image: url(../img/sign-bg.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.5);
+  place-items: center;
+  min-height: calc(100vh - 168px);
+  padding-top: 50px;
+}
