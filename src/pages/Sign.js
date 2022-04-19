@@ -1,26 +1,35 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import styles from "../styles/sign.module.css";
 import { login, logout } from "../store/slices/authedUser";
 import { addUser } from "../utils/API";
 
+import styles from "../styles/sign.module.css";
 import Form from "../components/Form";
 import Input from "../components/Input";
 
-const Sign = () => {
+const Sign = ({ authedUser, login, logout }) => {
   const pathname = window.location.pathname;
+  const navigate = useNavigate();
   const [isHasError, setIsHasError] = useState(false);
-  const dispatch = useDispatch();
-  const authedUser = useSelector((state) => state.authedUser);
+  const [signUpMsg, setSignUpMsg] = useState("");
+
+  useEffect(() => {
+    authedUser && navigate("/");
+  }, [authedUser]);
+
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(
-      login({
-        username: e.target.elements.username.value,
-        password: e.target.elements.password.value,
-      })
-    );
+
+    login({
+      username: e.target.elements.username.value,
+      password: e.target.elements.password.value,
+    }).then((res) => {
+      if (!res.payload || res.payload.detail) {
+        setIsHasError(true);
+      }
+    });
   };
   const handleAddUser = (e) => {
     e.preventDefault();
@@ -31,24 +40,34 @@ const Sign = () => {
       elements.email.value,
       elements.password.value,
       elements.phone.value
-    );
+    ).then((d) => {
+      if (d === '"faild to send email"') {
+        navigate("/sign-in");
+        setIsHasError(false);
+      } else {
+        if (d === "this nick name is already used") {
+          setSignUpMsg("this username is already used");
+        } else {
+          setSignUpMsg("Please, enter valid information");
+        }
+        setIsHasError(true);
+      }
+    });
   };
 
   return (
     <main className={styles.sign}>
       <Form
         isHasError={isHasError}
-        errorMsg={"Username or password isn't right"}
+        errorMsg={
+          pathname === "/sign-in"
+            ? "Username or password isn't right"
+            : signUpMsg
+        }
         onSubmit={pathname === "/sign-in" ? handleLogin : handleAddUser}
         title={pathname === "/sign-in" ? "Sign In" : "Sign Up"}
       >
         {pathname === "/sign-in" ? <SignIn /> : <SignUp />}
-        <button type="button" onClick={() => dispatch(logout())}>
-          Logout
-        </button>
-        <button type="button" onClick={() => console.log(authedUser)}>
-          Logger
-        </button>
       </Form>
     </main>
   );
@@ -67,6 +86,7 @@ const SignIn = () => (
       labelTitle="Password"
       type="password"
       name="password"
+      minLength="8"
       placeholder="Enter your password"
       required
     />
@@ -93,18 +113,20 @@ const SignUp = () => (
       type="email"
       name="email"
       placeholder="Enter your email"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       required
     />
     <Input
       labelTitle="Password"
       type="password"
       name="password"
+      minLength="8"
       placeholder="Enter your password"
       required
     />
     <Input
       labelTitle="Phone"
-      type="tel"
+      type="number"
       name="phone"
       placeholder="Enter your phone"
       required
@@ -112,4 +134,7 @@ const SignUp = () => (
   </>
 );
 
-export default Sign;
+export default connect((state) => ({ authedUser: state.authedUser }), {
+  login,
+  logout,
+})(Sign);

@@ -67,6 +67,15 @@ form {
   background-color: rgb(28, 27, 27);
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
+form.error input {
+  border: 2px solid red;
+}
+form.error [role="alert"] {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  font-family: cursive;
+}
 .title {
   text-align: center;
   margin-bottom: 15px;
@@ -108,7 +117,14 @@ input {
   padding: 5px;
   font: inherit;
   margin-top: 5px;
+  font-family: cursive;
   outline-color: #007bff;
+}
+::placeholder {
+  font-family: "Permanent Marker";
+}
+::-webkit-inner-spin-button {
+  display: none;
 }
 @media (max-width: 500px) {
   label {
