@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { logout } from "../store/slices/authedUser";
@@ -7,7 +7,7 @@ import { logout } from "../store/slices/authedUser";
 import styles from "../styles/nav.module.css";
 import avatarSrc from "../img/avatar.png";
 
-const Nav = ({ authedUser, logout }) => {
+const Nav = ({ authedUser }) => {
   const showMenu = (e) => {
     e.target.parentElement.classList.add(styles.open);
     e.target.ariaExpanded = "true";
@@ -37,7 +37,9 @@ const Nav = ({ authedUser, logout }) => {
 
       <ul className={styles.icons}>
         <CartIcon />
-        {authedUser && <AvatarIcon authedUser={authedUser} />}
+        {authedUser && (
+          <AvatarIcon authedUser={authedUser} toggleMenu={toggleMenu} />
+        )}
         <NavLinksToggler isOpened={isOpened} setIsOpened={setIsOpened} />
       </ul>
 
@@ -91,7 +93,7 @@ const Nav = ({ authedUser, logout }) => {
         </li>
 
         {authedUser ? (
-          <AvatarIcon authedUser={authedUser} />
+          <AvatarIcon authedUser={authedUser} toggleMenu={toggleMenu} />
         ) : (
           <li>
             <Link to="/sign-in">Sign In</Link>
@@ -124,13 +126,37 @@ const CartIcon = () => (
   </li>
 );
 
-const AvatarIcon = ({ authedUser }) => (
-  <li className={styles.avatar}>
-    <Link aria-label="To your personal information" to="/user/id">
-      <img src={authedUser.img || avatarSrc} alt="" />
-    </Link>
-  </li>
-);
+const AvatarIcon = ({ authedUser }) => {
+  const dispatch = useDispatch();
+  const toggleMenu = (e) => {
+    e.target.parentElement.classList.toggle(styles.open);
+  };
+
+  return (
+    <li className={styles.avatar}>
+      <button
+        onClick={toggleMenu}
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="avatarMenu"
+      >
+        <img
+          src={authedUser.img || avatarSrc}
+          alt={`${authedUser.name} avatar`}
+        />
+      </button>
+
+      <ul id="avatarMenu" className={styles.avatarDrop}>
+        <li>
+          <Link to={`/user/${authedUser.username}`}>Settings</Link>
+        </li>
+        <li>
+          <button onClick={() => dispatch(logout())}>Logout</button>
+        </li>
+      </ul>
+    </li>
+  );
+};
 
 const NavLinksToggler = ({ isOpened, setIsOpened }) => (
   <li className={styles.linksToggler}>
@@ -159,6 +185,4 @@ const NavLinksToggler = ({ isOpened, setIsOpened }) => (
   </li>
 );
 
-export default connect((state) => ({ authedUser: state.authedUser }), {
-  logout,
-})(Nav);
+export default connect((state) => ({ authedUser: state.authedUser }))(Nav);
