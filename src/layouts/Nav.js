@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { logout } from "../store/slices/authedUser";
 
 import styles from "../styles/nav.module.css";
 import avatarSrc from "../img/avatar.png";
 
-const Nav = () => {
+const Nav = ({ authedUser, logout }) => {
   const showMenu = (e) => {
     e.target.parentElement.classList.add(styles.open);
     e.target.ariaExpanded = "true";
@@ -24,7 +27,6 @@ const Nav = () => {
     return false;
   };
 
-  const authedUser = null;
   const [isOpened, setIsOpened] = useState(false);
 
   return (
@@ -157,4 +159,6 @@ const NavLinksToggler = ({ isOpened, setIsOpened }) => (
   </li>
 );
 
-export default Nav;
+export default connect((state) => ({ authedUser: state.authedUser }), {
+  logout,
+})(Nav);
