@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { setToStorage, removeFromStorage } from "../../utils/helpers";
 import { signIn } from "../../utils/API";
+import {
+  setToStorage,
+  getFromStorage,
+  removeFromStorage,
+} from "../../utils/helpers";
 
 export const login = createAsyncThunk(
   "authedUser/login",
@@ -17,10 +21,13 @@ const authedUserSlice = createSlice({
       removeFromStorage();
       return initialState;
     },
+    checkLogin: (state) => getFromStorage() && getFromStorage(),
   },
   extraReducers: {
     [login.fulfilled]: (state, { payload }) => {
       if (payload.detail) return initialState;
+
+      console.log(payload);
 
       const data = {
         name: payload.name,
@@ -36,5 +43,5 @@ const authedUserSlice = createSlice({
   },
 });
 
-export const { logout } = authedUserSlice.actions;
+export const { checkLogin, logout } = authedUserSlice.actions;
 export default authedUserSlice.reducer;

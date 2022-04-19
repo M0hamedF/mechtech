@@ -1,8 +1,8 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { login } from "../store/slices/authedUser";
-import { getFromStorage, getStorageKey } from "../utils/helpers";
+import { checkLogin } from "../store/slices/authedUser";
 
 import Nav from "../layouts/Nav";
 import Home from "../pages/Home";
@@ -10,8 +10,9 @@ import Sign from "../pages/Sign";
 import Footer from "../layouts/Footer";
 
 function App() {
+  const dispatch = useDispatch();
   useEffect(() => {
-    localStorage.getItem(getStorageKey()) && login(getFromStorage());
+    dispatch(checkLogin());
   }, []);
 
   return (
