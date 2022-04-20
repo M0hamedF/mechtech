@@ -1,7 +1,8 @@
 nav {
+  --bg: #2b2c2d;
   letter-spacing: 1.5px;
   flex-wrap: wrap;
-  background-color: #2b2c2d;
+  background-color: var(--bg);
   padding: 0 30px;
   display: flex;
   width: 100%;
@@ -20,6 +21,9 @@ nav {
   color: var(--secondary);
 }
 .avatar {
+  position: relative;
+}
+.avatar > button {
   display: flex;
   width: 32px;
   height: 32px;
@@ -30,10 +34,8 @@ nav {
   align-items: center;
   overflow: hidden;
 }
-.avatar a {
-  display: block;
-  width: 100%;
-  height: 100%;
+.avatar img {
+  pointer-events: none;
 }
 .cart {
   width: 24px;
@@ -71,7 +73,7 @@ nav svg:hover {
   min-width: 160px;
   position: absolute;
   will-change: display;
-  background-color: #2b2c2d;
+  background-color: var(--bg);
   box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
 }
 .dropdown a {
@@ -118,6 +120,26 @@ nav svg:hover {
     display: none;
   }
 }
+
+.avatarDrop {
+  position: absolute;
+  background-color: var(--bg);
+  border-radius: 0;
+  text-align: center;
+  padding: 20px;
+  right: -41px;
+  top: 41px;
+  display: none;
+  gap: 20px;
+}
+.avatar.open .avatarDrop {
+  display: grid;
+}
+.avatarDrop li > *:focus-visible,
+.avatarDrop li > *:hover {
+  color: var(--secondary);
+}
+
 @media (min-width: 768px) {
   .icons {
     display: none;
