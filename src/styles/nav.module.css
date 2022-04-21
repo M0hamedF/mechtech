@@ -35,6 +35,7 @@ nav {
   overflow: hidden;
 }
 .avatar img {
+  width: 100%;
   pointer-events: none;
 }
 .cart {

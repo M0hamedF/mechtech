@@ -1,31 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+import { productsFormat } from "../../utils/helpers";
 import { getProducts } from "../../utils/API";
 
-export const getAll = createAsyncThunk("products/getAll", async (thunkAPI) => {
-  const res = await getProducts();
-  return res;
-});
+export const getAll = createAsyncThunk(
+  "products/getAll",
+  async () => await getProducts()
+);
 
-const initialState = {
-  entities: {},
-  loading: false,
-};
-
+const initialState = null;
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {},
   extraReducers: {
-    [getAll.pending]: (state) => {
-      state.loading = true;
-    },
-    [getAll.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.entities = action.payload;
-    },
-    [getAll.rejected]: (state) => {
-      state.loading = false;
-    },
+    [getAll.fulfilled]: (state, action) => productsFormat(action.payload),
   },
 });
 

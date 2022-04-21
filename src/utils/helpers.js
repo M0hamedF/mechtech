@@ -30,3 +30,15 @@ export function getFromStorage(key = appKey) {
 export function removeFromStorage(key = appKey) {
   localStorage.removeItem(key);
 }
+
+export function productsFormat(products) {
+  const obj = {};
+
+  for (let i = 0; i < products.length; i++) {
+    obj[products[i].product_categorize] = products.filter(
+      (product) => product.product_categorize === products[i].product_categorize
+    );
+  }
+
+  return obj;
+}

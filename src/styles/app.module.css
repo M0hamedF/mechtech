@@ -1,4 +1,7 @@
 .app {
+  top: 50px;
+  position: relative;
+  min-height: calc(100vh - 50px);
 }
 
 /*
@@ -59,7 +62,6 @@ form {
   display: flex;
   padding: 50px;
   max-width: 90%;
-  margin-top: 45px;
   min-width: 250px;
   min-height: 250px;
   border-radius: 20px;
@@ -107,7 +109,7 @@ label {
   display: grid;
   font-size: 15px;
   align-items: center;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 70px calc(100% - 70px);
 }
 label strong {
   font-weight: 500;
