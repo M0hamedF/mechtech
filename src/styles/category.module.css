@@ -1,0 +1,50 @@
+/* 
+  Header area
+*/
+
+header.hero {
+  background-image: url("../img/cat-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  height: 300px;
+  display: grid;
+  place-items: center;
+  cursor: default;
+}
+
+header h1 {
+  font-size: 6rem;
+  color: var(--secondary);
+}
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 4rem;
+  }
+}
+
+/* 
+  Main area
+*/
+
+main.category {
+  gap: 30px;
+  padding: 70px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 300px);
+}
+.category article {
+  height: 300px;
+}
+@media (max-width: 500px) {
+  main.category {
+    padding: 70px 20px;
+    grid-template-columns: repeat(auto-fill, 250px);
+  }
+  .category article {
+    height: 250px;
+  }
+}

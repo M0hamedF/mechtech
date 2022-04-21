@@ -8,6 +8,7 @@ import styles from "../styles/app.module.css";
 import Nav from "../layouts/Nav";
 import Home from "../pages/Home";
 import Sign from "../pages/Sign";
+import Category from "../pages/Category";
 import Footer from "../layouts/Footer";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sign-in" element={<Sign />} />
           <Route path="/sign-up" element={<Sign />} />
+          <Route path="/category/:name" element={<Category />} />
         </Routes>
 
         <Footer />

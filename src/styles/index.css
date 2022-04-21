@@ -23,7 +23,6 @@ body {
 }
 
 main {
-  background-color: #000;
   min-height: calc(100vh - 168px);
 }
 @media (max-width: 767px) {
