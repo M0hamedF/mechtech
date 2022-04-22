@@ -17,14 +17,18 @@ main.settings {
   color: red;
 }
 
-.reset {
+.options {
+  gap: 30px;
+  display: flex;
+  justify-content: center;
+}
+.options > * {
   outline: none;
   font-size: 14px;
-  text-align: center;
   will-change: color, text-decoration;
 }
-.reset:focus-visible,
-.reset:hover {
+.options > *:focus-visible,
+.options > *:hover {
   color: var(--secondary);
   text-decoration: underline;
 }

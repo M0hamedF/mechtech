@@ -9,6 +9,7 @@ import { userFormat } from "../utils/helpers";
 import styles from "../styles/settings.module.css";
 import Form from "../components/Form";
 import Input from "../components/Input";
+import DeleteUserBtn from "../components/DeleteUserBtn";
 
 const Settings = ({ authedUser, update }) => {
   const navigate = useNavigate();
@@ -111,9 +112,10 @@ const Settings = ({ authedUser, update }) => {
             required
           />
 
-          <Link to="/reset" className={styles.reset}>
-            Want to reset your password?
-          </Link>
+          <p className={styles.options}>
+            <Link to="/reset">reset your password</Link>
+            <DeleteUserBtn />
+          </p>
         </Form>
       )}
     </main>
