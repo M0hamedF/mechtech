@@ -10,6 +10,7 @@ import Nav from "../layouts/Nav";
 import Home from "../pages/Home";
 import Sign from "../pages/Sign";
 import Reset from "../pages/Reset";
+import Cart from "../pages/Cart";
 import Settings from "../pages/Settings";
 import Category from "../pages/Category";
 import Product from "../pages/Product";
@@ -34,6 +35,7 @@ function App() {
           <Route path="/sign-up" element={<Sign />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/products/:catName" element={<Category />} />
           <Route path="/product/:catName/:prodName" element={<Product />} />
         </Routes>
