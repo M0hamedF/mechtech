@@ -16,3 +16,15 @@ main.settings {
 .error {
   color: red;
 }
+
+.reset {
+  outline: none;
+  font-size: 14px;
+  text-align: center;
+  will-change: color, text-decoration;
+}
+.reset:focus-visible,
+.reset:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}

@@ -90,6 +90,22 @@ export async function updateUser(
   return data;
 }
 
+export async function resetPassword(id, email, password) {
+  const res = await fetch(`https://seefshop.herokuapp.com/server/resetpassword/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": " application/json",
+    },
+ 		body: JSON.stringify({
+ 			"email": email,
+      "password": password
+  	}),
+  })
+
+	const data = await res.text();
+  return data;
+}
+
 export async function deleteUser(id) {
   const res = await fetch(`https://seefshop.herokuapp.com/server/deleteuser/${id}`, {
     method: "DELETE",

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { update } from "../store/slices/authedUser";
 import { updateUser } from "../utils/API";
@@ -110,6 +110,10 @@ const Settings = ({ authedUser, update }) => {
             defaultValue={authedUser.phone}
             required
           />
+
+          <Link to="/reset" className={styles.reset}>
+            Want to reset your password?
+          </Link>
         </Form>
       )}
     </main>

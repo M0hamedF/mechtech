@@ -11,6 +11,7 @@ import Home from "../pages/Home";
 import Sign from "../pages/Sign";
 import Category from "../pages/Category";
 import Settings from "../pages/Settings";
+import Reset from "../pages/Reset";
 import Footer from "../layouts/Footer";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/sign-in" element={<Sign />} />
           <Route path="/sign-up" element={<Sign />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/reset" element={<Reset />} />
           <Route path="/category/:name" element={<Category />} />
         </Routes>
 
