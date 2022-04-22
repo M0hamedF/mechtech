@@ -42,3 +42,7 @@ export function productsFormat(products) {
 
   return obj;
 }
+
+export function userFormat({ id, name, nick_name, email, phone, img }) {
+  return { id, name, username: nick_name, email, phone, img };
+}

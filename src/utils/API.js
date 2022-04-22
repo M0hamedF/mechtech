@@ -45,32 +45,48 @@ export async function updateUser(
   name,
   username,
   email,
-  password,
   phone,
-  img = null,
-  imgPath
+  img,
+  imgName
 ) {
-  const formdata = new FormData();
-  formdata.append("name", name);
-  formdata.append("nick_name", username);
-  formdata.append("email", email);
-  formdata.append("password", password);
-  formdata.append("phone", phone);
-  formdata.append("country", "eg");
-  img !== null && formdata.append("img", img, imgPath);
+  let requestOptions;
 
-  const requestOptions = {
-    method: "POST",
-    body: formdata,
-    redirect: "follow",
-  };
+  if (img) {
+	  const formdata = new FormData();
+	  formdata.append("name", name);
+	  formdata.append("nick_name", username);
+	  formdata.append("email", email);
+	  formdata.append("phone", phone);
+	  formdata.append("country", "eg");
+	  formdata.append("img", img, imgName);
+
+  	requestOptions = {
+	    method: "POST",
+	    body: formdata,
+	    redirect: "follow",
+  	};
+  } else {
+  	requestOptions = {
+	    method: "POST",
+	    headers: {
+	      "Content-Type": " application/json",
+	    },
+   		body: JSON.stringify({
+	      "name": name,
+	      "nick_name": username,
+	      "email": email,
+	      "phone": phone,
+	      "country": "eg"
+    	}),
+  	};
+  }
 
   const res = await fetch(
-    `https://seefshop.herokuapp.com/server/updateUser/${id}`,
+    `https://seefshop.herokuapp.com/server/updateuser/${id}`,
     requestOptions
-  );
+  )
 
-	const data = await res.text();
+	const data = await res.json();
   return data;
 }
 
