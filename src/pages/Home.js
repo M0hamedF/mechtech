@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 
+import { textToURL } from "../utils/helpers";
+
 import style from "../styles/home.module.css";
 import components from "../styles/app.module.css";
 import heroImgSrc from "../img/hero-img.png";
@@ -46,7 +48,7 @@ export const Home = () => {
               catagories.map((category) => (
                 <Card
                   key={category}
-                  href={`/category/${category.toLowerCase()}`}
+                  href={`/products/${textToURL(category)}`}
                   bg={`https://seefshop.herokuapp.com${
                     products[category][0].product_image1 || heroImgSrc
                   }`}

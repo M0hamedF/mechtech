@@ -1,5 +1,6 @@
 .app {
   top: 50px;
+  display: grid;
   position: relative;
   background-color: #000;
   min-height: calc(100vh - 50px);

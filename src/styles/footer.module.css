@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap");
 
 footer {
+  align-items: end;
   padding: 25px 100px 15px;
   background-color: rgb(23, 22, 22);
   font-family: "Source Sans Pro", sans-serif;

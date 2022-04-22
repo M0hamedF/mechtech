@@ -31,6 +31,13 @@ export function removeFromStorage(key = appKey) {
   localStorage.removeItem(key);
 }
 
+export function textToURL(str) {
+  return str.replace(/\s/g, "-");
+}
+export function URLToText(str) {
+  return str.replace(/-/g, " ");
+}
+
 export function productsFormat(products) {
   const obj = {};
 

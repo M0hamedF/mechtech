@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
+import { textToURL } from "../utils/helpers";
+
 import styles from "../styles/category.module.css";
 import Card from "../components/Card";
 
@@ -12,7 +14,7 @@ const Category = () => {
       setCategory(
         Object.keys(products).filter(
           (category) =>
-            category.toLowerCase() === window.location.pathname.substr(10)
+            textToURL(category) === window.location.pathname.substr(10)
         )[0]
       );
     }
@@ -30,9 +32,9 @@ const Category = () => {
             <Card
               key={product.id}
               bg={product.product_image1}
-              href={`/product/${product.product_name
-                .replace(/\s/g, "-")
-                .toLowerCase()}`}
+              href={`/product/${textToURL(category)}/${textToURL(
+                product.product_name
+              )}`}
             >
               <strong>{product.product_name}</strong>
             </Card>
