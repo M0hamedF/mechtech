@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { signIn } from "../../utils/API";
 import {
+  userFormat,
   setToStorage,
   getFromStorage,
   removeFromStorage,
@@ -22,20 +23,16 @@ const authedUserSlice = createSlice({
       return initialState;
     },
     checkLogin: (state) => getFromStorage() && getFromStorage(),
+    update: (state, { payload }) => {
+      setToStorage(payload);
+      return payload;
+    },
   },
   extraReducers: {
     [login.fulfilled]: (state, { payload }) => {
       if (payload.detail) return initialState;
 
-      console.log(payload);
-
-      const data = {
-        name: payload.name,
-        username: payload.nick_name,
-        img: payload.img,
-        email: payload.email,
-        phone: payload.phone,
-      };
+      const data = userFormat(payload);
 
       setToStorage(data);
       return data;
@@ -43,5 +40,5 @@ const authedUserSlice = createSlice({
   },
 });
 
-export const { checkLogin, logout } = authedUserSlice.actions;
+export const { checkLogin, logout, update } = authedUserSlice.actions;
 export default authedUserSlice.reducer;

@@ -1,0 +1,34 @@
+main.settings {
+  height: 700px;
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.valid,
+.error {
+  text-align: center;
+}
+.valid {
+  color: green;
+}
+.error {
+  color: red;
+}
+
+.options {
+  gap: 30px;
+  display: flex;
+  justify-content: center;
+}
+.options > * {
+  outline: none;
+  font-size: 14px;
+  will-change: color, text-decoration;
+}
+.options > *:focus-visible,
+.options > *:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}

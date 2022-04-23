@@ -22,6 +22,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  min-height: calc(100vh - 168px);
+}
+@media (max-width: 767px) {
+  main {
+    min-height: calc(100vh - 500px);
+  }
+}
+
 ul {
   list-style: none;
 }

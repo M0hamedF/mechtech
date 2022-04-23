@@ -1,0 +1,15 @@
+main.reset {
+  height: 500px;
+  display: grid;
+  place-items: center;
+}
+
+.reset input:read-only {
+  opacity: 0.3;
+  outline: none;
+}
+.reset [role="alert"] {
+  color: green;
+  font-size: 14px;
+  text-align: center;
+}

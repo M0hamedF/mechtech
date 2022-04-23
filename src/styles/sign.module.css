@@ -7,6 +7,17 @@ main.sign {
   background-blend-mode: multiply;
   background-color: rgba(0, 0, 0, 0.5);
   place-items: center;
-  min-height: calc(100vh - 168px);
-  padding-top: 50px;
+  height: 700px;
+}
+
+.reset {
+  outline: none;
+  font-size: 14px;
+  text-align: center;
+  will-change: color, text-decoration;
+}
+.reset:focus-visible,
+.reset:hover {
+  color: var(--secondary);
+  text-decoration: underline;
 }

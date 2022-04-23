@@ -3,11 +3,16 @@ import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { logout } from "../store/slices/authedUser";
+import { textToURL } from "../utils/helpers";
 
 import styles from "../styles/nav.module.css";
 import avatarSrc from "../img/avatar.png";
 
+<<<<<<< HEAD
 const Nav = ({ authedUser }) => {
+=======
+const Nav = ({ authedUser, cart, products }) => {
+>>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
   const showMenu = (e) => {
     e.target.parentElement.classList.add(styles.open);
     e.target.ariaExpanded = "true";
@@ -36,7 +41,12 @@ const Nav = ({ authedUser }) => {
       </Link>
 
       <ul className={styles.icons}>
+<<<<<<< HEAD
         <CartIcon />
+=======
+        <CartIcon cart={cart} />
+
+>>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
         {authedUser && (
           <AvatarIcon authedUser={authedUser} toggleMenu={toggleMenu} />
         )}
@@ -67,29 +77,17 @@ const Nav = ({ authedUser }) => {
             Categories
           </Link>
           <ul className={styles.dropdown}>
-            <li>
-              <Link to="/categories/desktop">Desktop</Link>
-            </li>
-            <li>
-              <Link to="/categories/gaming-gear">Gaming Gear</Link>
-            </li>
-            <li>
-              <Link to="/categories/storage">Storage</Link>
-            </li>
-            <li>
-              <Link to="/categories/monitor">Monitors</Link>
-            </li>
-            <li>
-              <Link to="/categories/laptop">Laptops</Link>
-            </li>
+            {products &&
+              Object.keys(products).map((key) => (
+                <li>
+                  <Link to={`/products/${textToURL(key)}`}>{key}</Link>
+                </li>
+              ))}
           </ul>
         </li>
 
         <li>
           <Link to="/top-products">Top Products</Link>
-        </li>
-        <li>
-          <Link to="/about-us">About Us</Link>
         </li>
 
         {authedUser ? (
@@ -100,15 +98,19 @@ const Nav = ({ authedUser }) => {
           </li>
         )}
 
-        <CartIcon />
+        <CartIcon cart={cart} />
       </ul>
     </nav>
   );
 };
 
-const CartIcon = () => (
+const CartIcon = ({ cart }) => (
   <li className={styles.cart}>
-    <Link to="/cart" aria-label="To cart page">
+    <Link
+      to="/cart"
+      aria-label="To cart page"
+      className={cart.length ? styles.dot : ""}
+    >
       <svg
         width="24"
         height="24"
@@ -148,7 +150,14 @@ const AvatarIcon = ({ authedUser }) => {
 
       <ul id="avatarMenu" className={styles.avatarDrop}>
         <li>
+<<<<<<< HEAD
           <Link to={`/user/${authedUser.username}`}>Settings</Link>
+=======
+          <Link to={`/user/${authedUser.username}`}>Profile</Link>
+        </li>
+        <li>
+          <Link to="/settings">Settings</Link>
+>>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
         </li>
         <li>
           <button onClick={() => dispatch(logout())}>Logout</button>
@@ -171,6 +180,7 @@ const NavLinksToggler = ({ isOpened, setIsOpened }) => (
         height="24"
         fill="var(--primary)"
         fillRule="evenodd"
+        aria-hidden="true"
       >
         {!isOpened ? (
           <path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z" />
@@ -185,4 +195,12 @@ const NavLinksToggler = ({ isOpened, setIsOpened }) => (
   </li>
 );
 
+<<<<<<< HEAD
 export default connect((state) => ({ authedUser: state.authedUser }))(Nav);
+=======
+export default connect(({ authedUser, cart, products }) => ({
+  authedUser,
+  cart,
+  products,
+}))(Nav);
+>>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d

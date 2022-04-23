@@ -2,8 +2,10 @@
 	Header area
 */
 
-.hero {
-  padding: 120px 70px 70px;
+header.hero {
+  display: flex;
+  padding: 0 70px;
+  align-items: center;
   background-image: url(../img/hero-bg.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -12,7 +14,11 @@
 }
 @media (max-width: 991px) {
   .hero {
+    min-height: 800px;
+    max-height: 800px;
     text-align: center;
+    flex-direction: column;
+    justify-content: center;
   }
   .hero a {
     margin: 0 auto;
@@ -21,8 +27,21 @@
 @media (min-width: 992px) {
   .hero {
     gap: 20px;
-    display: flex;
+    min-height: 600px;
+    max-height: 600px;
     justify-content: space-between;
+  }
+}
+@media (max-width: 767px) {
+  .hero {
+    min-height: 300px;
+    max-height: 300px;
+  }
+  .hero a {
+    padding: 0;
+    width: 150px;
+    height: 48px;
+    line-height: 47px;
   }
 }
 
@@ -66,9 +85,6 @@
 
 /* [2] Intro */
 
-.intro {
-  margin-top: 60px;
-}
 .intro h1 {
   font-size: 40px;
   letter-spacing: 3px;
@@ -112,7 +128,7 @@
 	Main area
 */
 
-main {
+main.home {
   padding: 70px;
   background-color: #000;
 }

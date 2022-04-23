@@ -1,0 +1,56 @@
+
+
+.Faqa {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    /* background-image: url(../img/keyboards\ razer.jpg); */
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.Faqa .container {
+    margin: 20px 150px;
+}
+
+.Faqa .title {
+    margin: 70px 150px 10px;
+    font-size: 1.8em;
+    background-repeat: no-repeat;
+}
+
+.Faqa .title img {
+    max-width: 100%;
+}
+
+.Faqa h3 {
+    font-size: 1.6em;
+}
+
+.Faqa p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+@media(max-width:700px) {
+    .Faqa .container {
+        margin: 20px 50px;
+    }
+
+    .Faqa .title {
+        margin: 50px 50px 20px;
+    }
+}
+
+@media(max-width:550px) {
+    .Faqa .title img {
+        min-width: 370px;
+        margin-bottom: -300px;
+    }
+
+
+}

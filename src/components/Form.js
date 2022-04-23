@@ -2,7 +2,14 @@ import { Link } from "react-router-dom";
 
 import styles from "../styles/app.module.css";
 
-const Form = ({ onSubmit, title, isHasError, errorMsg, children }) => {
+const Form = ({
+  onSubmit,
+  submitTitle,
+  title,
+  isHasError,
+  errorMsg,
+  children,
+}) => {
   const pathname = window.location.pathname;
 
   return (
@@ -14,7 +21,7 @@ const Form = ({ onSubmit, title, isHasError, errorMsg, children }) => {
       {isHasError && <p role="alert">{errorMsg}</p>}
       {children}
       <button type="submit" className={styles.btn}>
-        {title}
+        {submitTitle || title}
       </button>
       {pathname.includes("sign") && (
         <p className={styles.redirect}>

@@ -1,9 +1,19 @@
+import { useSelector } from "react-redux";
+
+import { textToURL } from "../utils/helpers";
+
 import style from "../styles/home.module.css";
 import components from "../styles/app.module.css";
 import heroImgSrc from "../img/hero-img.png";
 import Card from "../components/Card";
 
 export const Home = () => {
+  let catagories;
+  const products = useSelector((state) => state.products);
+  if (products) {
+    catagories = Object.keys(products).filter((key) => key !== "top");
+  }
+
   return (
     <>
       <header id="hero" className={style.hero}>
@@ -27,16 +37,25 @@ export const Home = () => {
         </div>
       </header>
 
-      <main>
+      <main className={style.home}>
         <section id="categories" className={style.categories}>
           <h2 className={style.title}>
             Choose Your <br></br> <span>Category</span>
           </h2>
 
           <div className={style.categoriesContainer}>
-            <Card href={`/category/id`} bg={heroImgSrc}>
-              Desktop
-            </Card>
+            {products &&
+              catagories.map((category) => (
+                <Card
+                  key={category}
+                  href={`/products/${textToURL(category)}`}
+                  bg={`https://seefshop.herokuapp.com${
+                    products[category][0].product_image1 || heroImgSrc
+                  }`}
+                >
+                  {category}
+                </Card>
+              ))}
           </div>
         </section>
 
@@ -53,4 +72,5 @@ export const Home = () => {
     </>
   );
 };
+
 export default Home;

@@ -30,3 +30,26 @@ export function getFromStorage(key = appKey) {
 export function removeFromStorage(key = appKey) {
   localStorage.removeItem(key);
 }
+
+export function textToURL(str) {
+  return str.replace(/\s/g, "-");
+}
+export function URLToText(str) {
+  return str.replace(/-/g, " ");
+}
+
+export function productsFormat(products) {
+  const obj = {};
+
+  for (let i = 0; i < products.length; i++) {
+    obj[products[i].product_categorize] = products.filter(
+      (product) => product.product_categorize === products[i].product_categorize
+    );
+  }
+
+  return obj;
+}
+
+export function userFormat({ id, name, nick_name, email, phone, img }) {
+  return { id, name, username: nick_name, email, phone, img };
+}

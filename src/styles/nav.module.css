@@ -35,12 +35,27 @@ nav {
   overflow: hidden;
 }
 .avatar img {
+<<<<<<< HEAD
   pointer-events: none;
+=======
+  width: 100%;
+>>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
 }
 .cart {
   width: 24px;
   height: 24px;
   display: block;
+  position: relative;
+}
+.dot::before {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--secondary);
 }
 
 .links {

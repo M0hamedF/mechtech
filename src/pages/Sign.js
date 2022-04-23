@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { login, logout } from "../store/slices/authedUser";
 import { addUser } from "../utils/API";
@@ -90,6 +90,9 @@ const SignIn = () => (
       placeholder="Enter your password"
       required
     />
+    <Link to="/reset" className={styles.reset}>
+      Forget your password?
+    </Link>
   </>
 );
 const SignUp = () => (
