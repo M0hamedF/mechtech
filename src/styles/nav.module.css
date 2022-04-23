@@ -35,11 +35,8 @@ nav {
   overflow: hidden;
 }
 .avatar img {
-<<<<<<< HEAD
   pointer-events: none;
-=======
   width: 100%;
->>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
 }
 .cart {
   width: 24px;

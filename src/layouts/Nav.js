@@ -8,11 +8,7 @@ import { textToURL } from "../utils/helpers";
 import styles from "../styles/nav.module.css";
 import avatarSrc from "../img/avatar.png";
 
-<<<<<<< HEAD
-const Nav = ({ authedUser }) => {
-=======
 const Nav = ({ authedUser, cart, products }) => {
->>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
   const showMenu = (e) => {
     e.target.parentElement.classList.add(styles.open);
     e.target.ariaExpanded = "true";
@@ -41,12 +37,8 @@ const Nav = ({ authedUser, cart, products }) => {
       </Link>
 
       <ul className={styles.icons}>
-<<<<<<< HEAD
-        <CartIcon />
-=======
         <CartIcon cart={cart} />
 
->>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
         {authedUser && (
           <AvatarIcon authedUser={authedUser} toggleMenu={toggleMenu} />
         )}
@@ -79,7 +71,7 @@ const Nav = ({ authedUser, cart, products }) => {
           <ul className={styles.dropdown}>
             {products &&
               Object.keys(products).map((key) => (
-                <li>
+                <li key={key}>
                   <Link to={`/products/${textToURL(key)}`}>{key}</Link>
                 </li>
               ))}
@@ -150,14 +142,10 @@ const AvatarIcon = ({ authedUser }) => {
 
       <ul id="avatarMenu" className={styles.avatarDrop}>
         <li>
-<<<<<<< HEAD
-          <Link to={`/user/${authedUser.username}`}>Settings</Link>
-=======
           <Link to={`/user/${authedUser.username}`}>Profile</Link>
         </li>
         <li>
           <Link to="/settings">Settings</Link>
->>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
         </li>
         <li>
           <button onClick={() => dispatch(logout())}>Logout</button>
@@ -195,12 +183,8 @@ const NavLinksToggler = ({ isOpened, setIsOpened }) => (
   </li>
 );
 
-<<<<<<< HEAD
-export default connect((state) => ({ authedUser: state.authedUser }))(Nav);
-=======
 export default connect(({ authedUser, cart, products }) => ({
   authedUser,
   cart,
   products,
 }))(Nav);
->>>>>>> 078a5b8463888cb4889a2ff7fb1b506cce17e80d
