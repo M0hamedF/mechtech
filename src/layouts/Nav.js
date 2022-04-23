@@ -78,10 +78,6 @@ const Nav = ({ authedUser, cart, products }) => {
           </ul>
         </li>
 
-        <li>
-          <Link to="/top-products">Top Products</Link>
-        </li>
-
         {authedUser ? (
           <AvatarIcon authedUser={authedUser} toggleMenu={toggleMenu} />
         ) : (

@@ -11,7 +11,7 @@ export const Home = () => {
   let catagories;
   const products = useSelector((state) => state.products);
   if (products) {
-    catagories = Object.keys(products).filter((key) => key !== "top");
+    catagories = Object.keys(products);
   }
 
   return (
@@ -56,16 +56,6 @@ export const Home = () => {
                   {category}
                 </Card>
               ))}
-          </div>
-        </section>
-
-        <section className="top-products">
-          <h2 className={style.title}>Top Products</h2>
-
-          <div className={style.topContainer}>
-            <Card href={`/category/id`} bg={heroImgSrc}>
-              Desktop
-            </Card>
           </div>
         </section>
       </main>
