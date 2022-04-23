@@ -14,9 +14,20 @@ main.Cart {
 .full {
   display: grid;
   min-height: 50%;
-  padding: 0 20px;
+  padding: 10px 20px;
   align-items: center;
 }
+.wrapper {
+  height: 90%;
+  overflow: auto;
+  display: grid;
+  gap: 10px;
+}
+.full a {
+  align-self: end;
+  justify-self: center;
+}
+
 .empty {
   color: #080a0d;
   min-height: 320px;
@@ -47,6 +58,7 @@ main.Cart {
 }
 
 .cartProduct {
+  height: 50px;
   display: flex;
   padding: 10px 20px;
   border-radius: 5px;
@@ -65,4 +77,8 @@ main.Cart {
 .detail img {
   width: 32px;
   height: 32px;
+}
+.price {
+  margin-left: 20px;
+  color: var(--secondary);
 }

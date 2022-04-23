@@ -95,6 +95,10 @@ const Product = () => {
                 ))}
               </ul>
 
+              <div className={styles.price}>
+                Price: <span>{product.price}$</span>
+              </div>
+
               <button
                 className={components.btn}
                 onClick={() => dispatch(add(product))}
