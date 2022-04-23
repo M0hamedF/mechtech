@@ -4,6 +4,12 @@ export async function getProducts() {
   return data;
 }
 
+export async function getUser(id) {
+  let res = await fetch(`https://seefshop.herokuapp.com/server/getuser/${id}`);
+  let data = await res.json();
+  return data;
+}
+
 export async function signIn(username, password) {
   const res = await fetch("https://seefshop.herokuapp.com/server/login", {
     method: "POST",

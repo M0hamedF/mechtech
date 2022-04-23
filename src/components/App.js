@@ -12,6 +12,7 @@ import Sign from "../pages/Sign";
 import Reset from "../pages/Reset";
 import Cart from "../pages/Cart";
 import Faq from "../pages/Faq";
+import User from "../pages/User";
 import Settings from "../pages/Settings";
 import Category from "../pages/Category";
 import Product from "../pages/Product";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/sign-up" element={<Sign />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/user/:id" element={<User />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/products/:catName" element={<Category />} />

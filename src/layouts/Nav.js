@@ -142,7 +142,7 @@ const AvatarIcon = ({ authedUser }) => {
 
       <ul id="avatarMenu" className={styles.avatarDrop}>
         <li>
-          <Link to={`/user/${authedUser.username}`}>Profile</Link>
+          <Link to={`/user/${authedUser.id}`}>Profile</Link>
         </li>
         <li>
           <Link to="/settings">Settings</Link>
