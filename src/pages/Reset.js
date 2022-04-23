@@ -15,7 +15,6 @@ const Reset = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await resetPassword(
-      authedUser.id,
       e.target.elements.email.value,
       e.target.elements.password.value
     );
@@ -31,6 +30,7 @@ const Reset = () => {
     <main className={styles.reset}>
       <Form
         submitTitle="Reset"
+        errorMsg="This email doesn't exist"
         isHasError={isHasError}
         title="Reset your password"
         onSubmit={handleSubmit}

@@ -96,8 +96,8 @@ export async function updateUser(
   return data;
 }
 
-export async function resetPassword(id, email, password) {
-  const res = await fetch(`https://seefshop.herokuapp.com/server/resetpassword/${id}`, {
+export async function resetPassword(email, password) {
+  const res = await fetch(`https://seefshop.herokuapp.com/server/resetpassword/${email}`, {
     method: "POST",
     headers: {
       "Content-Type": " application/json",
