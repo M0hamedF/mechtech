@@ -28,3 +28,5 @@ $ python manage.py migrate
 
 $ python manage.py runserver
 
+you also could to view project in live server 
+https://seefshop.herokuapp.com
