@@ -30,3 +30,5 @@ $ python manage.py runserver
 
 you also could to view project in live server 
 https://seefshop.herokuapp.com
+
+!!!sorry, the images have been deleted but heroku did it because we are use free postgress cloud
