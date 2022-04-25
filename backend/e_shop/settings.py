@@ -157,8 +157,6 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#EMAIL_BACKEND="sendgrid_backend.SendgridBackend"
-#SEND_GRID_API_KEY='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'
 SENDGRID_SANDBOX_MODE_IN_DEBUG=False
 EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST="smtp.gmail.com"
@@ -167,6 +165,6 @@ EMAIL_HOST_PASSWORD=''
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 
-DEFAULT_FROM_EMAIL='elshnawyseef675@gmail.com'
+DEFAULT_FROM_EMAIL=''
 
 django_heroku.settings(locals())
